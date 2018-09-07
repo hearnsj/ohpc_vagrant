@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# start the compute node for ohpc
+
+VBoxManage startvm "$1"
