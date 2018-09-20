@@ -13,7 +13,7 @@ the cruft of a vagrant init).  It leverages work from a
 (primaryly the development of an updated centos 7.5 image)
 but prefers a clean repo slate.  
 
-== Project Setup ==
+## Project Setup
 
 After cloning this project you need to initialize the submodule
 from with in the git repo
