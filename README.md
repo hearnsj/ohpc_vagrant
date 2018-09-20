@@ -12,3 +12,15 @@ the cruft of a vagrant init).  It leverages work from a
 [pilot project](https://gitlab.rc.uab.edu/ravi89/ohpc_vagrant)
 (primaryly the development of an updated centos 7.5 image)
 but prefers a clean repo slate.  
+
+== Project Setup ==
+
+After cloning this project you need to initialize the submodule
+from with in the git repo
+```
+git submodule init
+git submodule update
+```
+
+Alternatively you can provide the `--recurse-submodules` command 
+during the initial clone.
