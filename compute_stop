@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Stop the compute node for ohpc
+
+VBoxManage controlvm "$1" poweroff

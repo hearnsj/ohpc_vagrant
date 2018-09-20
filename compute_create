@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Create a network bootable compute node in virtualbox
+#
+# use native VBoxManage because Vagrant doesn't work
+# well with nodes that are meant to boot off the network.
+#
+# node is constrained to boot on the internal "compute" network
+
+nodename="$1"
+
+VBoxManage createvm --name "$nodename" --register
+
+
+VBoxManage modifyvm "$nodename" --memory 4096 --nic1 intnet --intnet1 compute  --nictype1=82540EM --rtcuseutc on
+
+VBoxManage storagectl "$nodename" --name IDE --add ide --controller PIIX4 --bootable on
+VBoxManage storageattach "$nodename" --storagectl IDE --type dvddrive --device 0 --port 1 --medium ~/iso/ipxe.iso

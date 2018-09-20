@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Destroy the compute node for ohpc
+
+VBoxManage unregistervm --delete "$1"
