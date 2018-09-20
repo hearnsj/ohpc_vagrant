@@ -38,24 +38,24 @@ ready to ingest compute nodes via wwnodescan and prompt to you
 start a compute node.  You can create a compute node and start it with
 the helper scripts:
 
-Create node c1 (choose whatever name makes sense, c1 matches the config):
+Create node c0 (choose whatever name makes sense, c0 matches the config):
 ```
-compute_create c1
+compute_create c0
 ```
 
-When prompted start node c1:
+When prompted start node c0:
 ```
-compute_start c1
+compute_start c0
 ```
 
 If you want to stop the node:
 ```
-compute_stop c1
+compute_stop c0
 ```
 
 If you want to get rid of the compute node VM:
 ```
-compute_destroy c1
+compute_destroy c0
 ```
 
 Note, the compute scripts work directly with the VirtualBox hypervisor.  The
