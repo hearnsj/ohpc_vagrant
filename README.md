@@ -24,3 +24,15 @@ git submodule update
 
 Alternatively you can provide the `--recurse-submodules` command 
 during the initial clone.
+
+## Cluster Setup
+
+After setting up the project above create your single node OpenHPC
+cluster with vagrant:
+```
+vagrant up
+```
+
+The ansible config will bring the master node to the point where its
+ready to ingest compute nodes via wwnodescan and prompt to you
+start a compute node.
