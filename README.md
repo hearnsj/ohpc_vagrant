@@ -35,4 +35,30 @@ vagrant up
 
 The ansible config will bring the master node to the point where its
 ready to ingest compute nodes via wwnodescan and prompt to you
-start a compute node.
+start a compute node.  You can create a compute node and start it with
+the helper scripts:
+
+Create node c0 (choose whatever name makes sense, c0 matches the config):
+```
+compute_create c0
+```
+
+When prompted start node c0:
+```
+compute_start c0
+```
+
+If you want to stop the node:
+```
+compute_stop c0
+```
+
+If you want to get rid of the compute node VM:
+```
+compute_destroy c0
+```
+
+Note, the compute scripts work directly with the VirtualBox hypervisor.  The
+machine created is a basic, lightweight diskless compute node the boots
+via iPXE from the OpenHPC master.   You may need to adjust the path to the
+ipxe.iso in compute_create to match your local environment.
