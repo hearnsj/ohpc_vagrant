@@ -62,3 +62,23 @@ Note, the compute scripts work directly with the VirtualBox hypervisor.  The
 machine created is a basic, lightweight diskless compute node the boots
 via iPXE from the OpenHPC master.   You may need to adjust the path to the
 ipxe.iso in compute_create to match your local environment.
+
+## Cluster Check
+
+After the `vagrant up` completes you can can log into the cluster with `vagrant ssh`.
+
+To confirm the system is operational run `sinfo` and you should see the following text:
+```
+PARTITION AVAIL  TIMELIMIT  NODES  STATE NODELIST
+low*         up 2-00:00:00      1   idle c0
+```
+
+You can run a test command on the compute node via slurm using:
+
+```
+srun hostname
+```
+
+This should return the name `c0`.
+
+With these tests confirmed you have a working OpenHPC cluster running slurm.
