@@ -11,6 +11,15 @@ Vagrant.configure("2") do |config|
     #ohpc.vm.customize ["modifyvm", :id, "--name", "ohpc"]
   end
 
+  config.vm.define "ood" do |ood|
+    ood.vm.box = "ravi89/centos7.5"
+    ood.vm.box_version = "1"
+    ood.vm.hostname = "ohpc"
+    ood.vm.network "private_network", ip: "10.1.1.254", virtualbox__intnet: "compute"
+    #ohpc.vm.customize ["modifyvm", :id, "--name", "ohpc"]
+  end
+
+
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     vb.memory = "2048"
