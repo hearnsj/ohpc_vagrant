@@ -16,7 +16,10 @@ Vagrant.configure("2") do |config|
     ood.vm.box_version = "1"
     ood.vm.hostname = "ood"
     ood.vm.network "private_network", ip: "10.1.1.254", virtualbox__intnet: "compute"
-    #ohpc.vm.customize ["modifyvm", :id, "--name", "ohpc"]
+    ood.vm.network "forwarded_port", guest: 80, host: 8080,
+      auto_correct: true
+    ood.vm.network "forwarded_port", guest: 443, host: 8443,
+      auto_correct: true
   end
 
 
