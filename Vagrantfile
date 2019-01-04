@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
     fi
 
     yum install -y ansible git vim bash-completion
-    ansible-playbook -c local -i /vagrant/CRI_XCBC/hosts -l `hostname` /vagrant/CRI_XCBC/site.yaml
+    ansible-playbook -c local -i /vagrant/CRI_XCBC/hosts -l `hostname` /vagrant/CRI_XCBC/site.yaml -b
 
   SHELL
 
