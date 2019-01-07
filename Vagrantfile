@@ -22,11 +22,14 @@ Vagrant.configure("2") do |config|
       auto_correct: true
   end
 
-
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     vb.memory = "2048"
   end
+
+  config.ssh.insert_key = false
+  config.ssh.private_key_path = ["~/.ssh/id_rsa", "~/.vagrant.d/insecure_private_key"]
+  config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/authorized_keys"
 
   config.vm.provision "shell", inline: <<-SHELL
     if [ -f /vagrant/localenv.sh ]; then
