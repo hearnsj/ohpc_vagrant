@@ -3,6 +3,9 @@
 
 Vagrant.configure("2") do |config|
 
+  # don't configure host-specific keys, config will use the user's key
+  config.ssh.insert_key = false
+
   config.vm.define "ohpc" do |ohpc|
     ohpc.vm.box = "ravi89/centos7.5"
     ohpc.vm.box_version = "1"
@@ -22,10 +25,21 @@ Vagrant.configure("2") do |config|
       auto_correct: true
   end
 
-
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     vb.memory = "2048"
+  end
+
+  # define user's key and insecure default
+  # insecure default is required for initial provisioning
+  config.ssh.private_key_path = ["~/.ssh/id_rsa", "~/.vagrant.d/insecure_private_key"]
+  # append user's key to vagrant config to avoid overwrite of existing authorized_keys
+  # https://stackoverflow.com/a/31153912/8928529
+  config.vm.provision "ssh_pub_key", type: "shell" do |s|
+      ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
+      s.inline = <<-SHELL
+        echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_keys
+      SHELL
   end
 
   config.vm.provision "shell", inline: <<-SHELL
