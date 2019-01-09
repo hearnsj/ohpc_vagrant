@@ -7,16 +7,14 @@ Vagrant.configure("2") do |config|
   config.ssh.insert_key = false
 
   config.vm.define "ohpc" do |ohpc|
-    ohpc.vm.box = "ravi89/centos7.5"
-    ohpc.vm.box_version = "1"
+    ohpc.vm.box = "centos/7"
     ohpc.vm.hostname = "ohpc"
     ohpc.vm.network "private_network", ip: "10.1.1.1", virtualbox__intnet: "compute"
     #ohpc.vm.customize ["modifyvm", :id, "--name", "ohpc"]
   end
 
   config.vm.define "ood" do |ood|
-    ood.vm.box = "ravi89/centos7.5"
-    ood.vm.box_version = "1"
+    ood.vm.box = "centos/7"
     ood.vm.hostname = "ood"
     ood.vm.network "private_network", ip: "10.1.1.254", virtualbox__intnet: "compute"
     ood.vm.network "forwarded_port", guest: 80, host: 8080,
