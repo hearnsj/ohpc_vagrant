@@ -3,6 +3,9 @@
 
 Vagrant.configure("2") do |config|
 
+  # don't configure host-specific keys, config will use the user's key
+  config.ssh.insert_key = false
+
   config.vm.define "ohpc" do |ohpc|
     ohpc.vm.box = "centos/7"
     ohpc.vm.hostname = "ohpc"
@@ -20,10 +23,21 @@ Vagrant.configure("2") do |config|
       auto_correct: true
   end
 
-
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     vb.memory = "2048"
+  end
+
+  # define user's key and insecure default
+  # insecure default is required for initial provisioning
+  config.ssh.private_key_path = ["~/.ssh/id_rsa", "~/.vagrant.d/insecure_private_key"]
+  # append user's key to vagrant config to avoid overwrite of existing authorized_keys
+  # https://stackoverflow.com/a/31153912/8928529
+  config.vm.provision "ssh_pub_key", type: "shell" do |s|
+      ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
+      s.inline = <<-SHELL
+        echo #{ssh_pub_key} >> /home/vagrant/.ssh/authorized_keys
+      SHELL
   end
 
   config.vm.provision "shell", inline: <<-SHELL
@@ -32,7 +46,7 @@ Vagrant.configure("2") do |config|
     fi
 
     yum install -y ansible git vim bash-completion
-    ansible-playbook -c local -i /vagrant/CRI_XCBC/hosts -l `hostname` /vagrant/CRI_XCBC/site.yaml
+    ansible-playbook -c local -i /vagrant/CRI_XCBC/hosts -l `hostname` /vagrant/CRI_XCBC/site.yaml -b
 
   SHELL
 
