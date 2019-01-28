@@ -9,8 +9,18 @@
 
 nodename="$1"
 
-VBoxManage createvm --name "$nodename" --register
+# Ensure that the $HOME/iso directory exists
+if [[ ! -d "$HOME/iso" ]]; then 
+  mkdir ~/iso
+fi
 
+# Download the ipxe.iso boot image if it doesn't already exist
+if [[ ! -f "$HOME/iso/ipxe.iso" ]]; then
+  echo "Downloading the network boot ipxe.iso file"
+  wget -O ~/iso/ipxe.iso http://boot.ipxe.org/ipxe.iso
+fi
+
+VBoxManage createvm --name "$nodename" --register
 
 VBoxManage modifyvm "$nodename" --memory 4096 --nic1 intnet --intnet1 compute  --nictype1=82540EM --rtcuseutc on
 
