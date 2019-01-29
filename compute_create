@@ -7,6 +7,11 @@
 #
 # node is constrained to boot on the internal "compute" network
 
+if [[ "$1" == "" ]]; then
+  echo "Please provide the name for the new compute node as the only argument"
+  exit 1
+fi
+
 nodename="$1"
 
 # Ensure that the $HOME/iso directory exists
