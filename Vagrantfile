@@ -45,6 +45,7 @@ Vagrant.configure("2") do |config|
       . /vagrant/localenv.sh
     fi
 
+    yum install -y epel-release
     yum install -y ansible git vim bash-completion
     ansible-playbook -c local -i /vagrant/CRI_XCBC/hosts -l `hostname` /vagrant/CRI_XCBC/site.yaml -b
 
