@@ -8,6 +8,10 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "ohpc" do |ohpc|
     ohpc.vm.box = "centos/7"
+    # version placeholder for selecting specific vagrant boxes
+    # used mainly for debugging and sanity checking
+    # leave commented to use the latest version in the local cache
+    #ood.vm.box_version = "1804.02"
     ohpc.vm.hostname = "ohpc"
     ohpc.vm.network "private_network", ip: "10.1.1.1", virtualbox__intnet: "compute"
     #ohpc.vm.customize ["modifyvm", :id, "--name", "ohpc"]
@@ -15,6 +19,10 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "ood" do |ood|
     ood.vm.box = "centos/7"
+    # version placeholder for selecting specific vagrant boxes
+    # used mainly for debugging and sanity checking
+    # leave commented to use the latest version in the local cache
+    #ood.vm.box_version = "1804.02"
     ood.vm.hostname = "ood"
     ood.vm.network "private_network", ip: "10.1.1.254", virtualbox__intnet: "compute"
     ood.vm.network "forwarded_port", guest: 80, host: 8080,
