@@ -100,6 +100,6 @@ vagrant ssh ood -c "sudo mount -a"
 After this point you can connect to the web ui of the ood node, typically via
 (the port mapping may change in your local vagrant env):
 
-http://localhost/8080
+http://localhost:8080
 
 The default user name and password for the web UI is 'vagrant'.
