@@ -17,7 +17,7 @@ fi
 # Download the ipxe.iso boot image if it doesn't already exist
 if [[ ! -f "$HOME/iso/ipxe.iso" ]]; then
   echo "Downloading the network boot ipxe.iso file"
-  crul -o ~/iso/ipxe.iso http://boot.ipxe.org/ipxe.iso
+  curl -o ~/iso/ipxe.iso http://boot.ipxe.org/ipxe.iso
 fi
 
 VBoxManage createvm --name "$nodename" --register
