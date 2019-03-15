@@ -87,12 +87,17 @@ with Open OnDemand.  After the cluster is up boot the ood node with:
 vagrant up ood
 ```
 
-This will provision the node and near the end of the provisioning provide several
-sudo commands that need to be run on the ohpc node to register the ood node
-with the cluster, ensuring data synchronization and slurm work.
+This will provision the node.
 
-After the node is provisioned (or booted) you need to work around mount issue
-with NFS mounts and issue the `mount -a` command on the ood node:
+NOTE: Near the end of the ood provisioning, the ansible scripts will display several
+sudo commands that need to be run on the ohpc node to register the ood node
+with the cluster. The commands ensure system file synchronization and slurm work. 
+You will need to copy and paste these sudo commands to a shell in ohpc.  The
+ansible script will pause for 90 seconds to give you time to do this.
+
+After the node is provisioned (or booted) you need to work around a mount issue
+with NFS mounts in the centos/7 vagrant box and issue the `mount -a` command 
+on the ood node:
 ```
 vagrant ssh ood -c "sudo mount -a"
 ```
