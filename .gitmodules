@@ -1,3 +1,3 @@
 [submodule "CRI_XCBC"]
 	path = CRI_XCBC
-	url = git@github.com:jprorama/CRI_XCBC.git
+	url = https://github.com/jprorama/CRI_XCBC.git
