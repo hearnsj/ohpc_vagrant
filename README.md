@@ -109,7 +109,7 @@ http://localhost/8080
 
 The default user name and password for the web UI is 'vagrant'.
 
-### Issues and Work arounds
+## Issues and Work arounds
 
 1. If you encounter an issue with OHPC node provisioning due to GPG key errors as mentioned in https://github.com/jprorama/CRI_XCBC/issues/77. Please run the below command as a work around from outside your VM:
 
