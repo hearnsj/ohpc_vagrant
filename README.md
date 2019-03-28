@@ -113,10 +113,9 @@ The default user name and password for the web UI is 'vagrant'.
 
 ## Issues and Work arounds
 
-
 1. After you run the above command if you were to get a `"kernel mismatch error"`. To get past this error please run the below commands:
 
-    `vagrant ssh ohpc -c "uname -r"`
+        `vagrant ssh ohpc -c "uname -r"`
 
     Copy and paste this kernel version in the group_vars/all to update the kernel version in the `build_kernel_ver` variable.
 
