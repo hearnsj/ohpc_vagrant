@@ -113,10 +113,12 @@ The default user name and password for the web UI is 'vagrant'.
 
 ## Issues and Work arounds
 
-1. After you run the above command if you were to get a `"kernel mismatch error"`. To get past this error please run the below commands:
+After you run the above command if you were to get a `"kernel mismatch error"`. To get past this error please run the below commands:
 
-        `vagrant ssh ohpc -c "uname -r"`
+```
+vagrant ssh ohpc -c "uname -r"
+```
 
-    Copy and paste this kernel version in the group_vars/all to update the kernel version in the `build_kernel_ver` variable.
+Copy and paste this kernel version in the group_vars/all to update the kernel version in the `build_kernel_ver` variable.
 
-2. If you encounter an issue with nodes_vivify role in updating the slurm status on nodes, specifically the error `slurm_update error: Invalid node state specified`. Please increase the compute node memory. For example if you're using 4GB already increase the memory to 6GB in your Virtual Box.
+If you encounter an issue with nodes_vivify role in updating the slurm status on nodes, specifically the error `slurm_update error: Invalid node state specified`. Please increase the compute node memory. For example if you're using 4GB already increase the memory to 6GB in your Virtual Box.
