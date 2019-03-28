@@ -116,6 +116,9 @@ The default user name and password for the web UI is 'vagrant'.
 
 ## Issues and Work arounds
 
-If you encounter an issue with OHPC node provisioning due to GPG key errors as mentioned in https://github.com/jprorama/CRI_XCBC/issues/77. Please run the following command: `vagrant box update`
+If you encounter an issue with OHPC node provisioning due to GPG key errors as mentioned in https://github.com/jprorama/CRI_XCBC/issues/77. Please run the following command: 
+```
+vagrant box update
+```
 
 If you encounter an issue with nodes_vivify role in updating the slurm status on nodes, specifically the error `slurm_update error: Invalid node state specified`. Please increase the compute node memory. For example if you're using 4GB already increase the memory to 6GB in your Virtual Box.
