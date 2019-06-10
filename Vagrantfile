@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
     os.tenant_name                      = "*****"
     os.password                         = "*****"
     os.region                           = "openstack"
-    os.networks                         = ['testnet','clusternet']
+    os.networks                         = ['dmznet','clusternet']
     #os.keypair_name                     = "MacBook"
     os.security_groups                  = ["default"]
   end
