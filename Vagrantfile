@@ -59,12 +59,12 @@ Vagrant.configure("2") do |config|
   #config.ssh.private_key_path = ["~/.ssh/id_rsa", "~/.vagrant.d/insecure_private_key"]
   # append user's key to vagrant config to avoid overwrite of existing authorized_keys
   # https://stackoverflow.com/a/31153912/8928529
-  config.vm.provision "ssh_pub_key", type: "shell" do |s|
-    ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
-    s.inline = <<-SHELL
-      echo #{ssh_pub_key} >> /home/centos/.ssh/authorized_keys
-    SHELL
-  end
+  #config.vm.provision "ssh_pub_key", type: "shell" do |s|
+  #  ssh_pub_key = File.readlines("#{Dir.home}/.ssh/id_rsa.pub").first.strip
+  #  s.inline = <<-SHELL
+  #    echo #{ssh_pub_key} >> /home/centos/.ssh/authorized_keys
+  #  SHELL
+  #end
 
   config.vm.provision "shell", inline: <<-SHELL
     if [ -f /vagrant/localenv.sh ]; then
