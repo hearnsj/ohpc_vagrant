@@ -15,12 +15,12 @@ Vagrant.configure("2") do |config|
     os.floating_ip_pool                 = 'bright-external-flat-externalnet'
 
     os.flavor                           = 'm1.medium'
-    os.project_name                     = "chirag24"
+    os.project_name                     = "******"
     os.user_domain_name                 = "default"
     os.project_domain_name              = "default"
-    os.username                         = "chirag24"
-    os.tenant_name                      = "chirag24"
-    os.password                         = "chirag@123"
+    os.username                         = "*****"
+    os.tenant_name                      = "*****"
+    os.password                         = "*****"
     os.region                           = "openstack"
     os.networks                         = ['testnet','clusternet']
     #os.keypair_name                     = "MacBook"
