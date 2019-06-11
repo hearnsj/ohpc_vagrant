@@ -9,7 +9,6 @@ Vagrant.configure("2") do |config|
   #config.vm.synced_folder '.', '/vagrant', disabled: true, type: 'rsync'
 
   config.vm.provider :openstack do |os|
-    os.image                            = 'CentOS-7-x86_64-GenericCloud-1905'
 
     os.openstack_auth_url               = ENV['OS_AUTH_URL']
     os.identity_api_version             = ENV['OS_IDENTITY_API_VERSION']
@@ -35,6 +34,7 @@ Vagrant.configure("2") do |config|
 
       ohpc.server_name                   = 'ohpc'
       ohpc.floating_ip                   = "192.168.16.145"
+      ohpc.image                         = 'CentOS-7-x86_64-GenericCloud-1905'
     end
   end
 
