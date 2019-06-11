@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# delete the dmz and cluster networks as the external and
+# internal networks of the ohpc cluster
+
+# delete the dmz network for the head node to attach 
+openstack router remove subnet borderrouter dmzsubnet
+openstack network delete dmznet
+
+# remove connect dmz to the internet
+openstack router delete borderrouter
+
+# delete the cluster network for the compute nodes
+openstack network delete clusternet
