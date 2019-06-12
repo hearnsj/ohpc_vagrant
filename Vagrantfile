@@ -9,19 +9,18 @@ Vagrant.configure("2") do |config|
   #config.vm.synced_folder '.', '/vagrant', disabled: true, type: 'rsync'
 
   config.vm.provider :openstack do |os|
-    os.openstack_auth_url               = 'http://ruffner.rc.uab.edu:5000/v3'
-    os.identity_api_version             = '3'
-    os.image                            = 'CentOS-7-x86_64-GenericCloud-1905'
+
+    os.openstack_auth_url               = ENV['OS_AUTH_URL']
+    os.identity_api_version             = ENV['OS_IDENTITY_API_VERSION']
     os.floating_ip_pool                 = 'bright-external-flat-externalnet'
 
     os.flavor                           = 'm1.medium'
-    os.project_name                     = "******"
-    os.user_domain_name                 = "default"
+    os.project_name                     = ENV['OS_PROJECT_NAME']
+    os.user_domain_name                 = ENV['OS_USER_DOMAIN_NAME']
     os.project_domain_name              = "default"
-    os.username                         = "*****"
-    os.tenant_name                      = "*****"
-    os.password                         = "*****"
-    os.region                           = "openstack"
+    os.username                         = ENV['OS_USERNAME']
+    os.password                         = ENV['OS_PASSWORD']
+    os.region                           = ENV['OS_REGION_NAME']
     os.networks                         = ['dmznet','clusternet']
     #os.keypair_name                     = "MacBook"
     os.security_groups                  = ["default"]
@@ -35,6 +34,7 @@ Vagrant.configure("2") do |config|
 
       ohpc.server_name                   = 'ohpc'
       ohpc.floating_ip                   = "192.168.16.145"
+      ohpc.image                         = 'CentOS-7-x86_64-GenericCloud-1905'
     end
   end
 
